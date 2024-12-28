@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math Functions in JS</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            color: #4a4a4a;
+            margin-top: 20px;
+        }
+
+        .container {
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 30px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+            transform: translate(-50%, -50%);
+            left: 50%;
+            top: 40%;
+            position: absolute;
+        }
+
+        input[type="number"], select, button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        p#result {
+            font-size: 1.2rem;
+            color: #333;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Math Functions in JS</h1>
+
+        <p>Enter a Number and Select the Math Operation:</p>
+
+        <input id="number" type="number" placeholder="Enter a Number" required>
+        
+        <select id="mathsOperation">
+            <option value="Select">Select</option>
+            <option value="abs">Absolute</option>
+            <option value="floor">Floor</option>
+            <option value="ceil">Ceiling</option>
+            <option value="round">Round</option>
+            <option value="pow2">Power (Square)</option>
+            <option value="sqrt">Square Root</option>
+        </select>
+
+        <button onclick="performMathsOperation()">Calculate</button>
+
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function performMathsOperation() {
+            var num = parseFloat(document.getElementById("number").value);
+            var operation = document.getElementById("mathsOperation").value;
+
+            if (isNaN(num)) {
+                document.getElementById("result").innerText = "Please enter a valid number.";
+                return;
+            }
+
+            let result;
+            switch (operation) {
+                case "abs":
+                    result = Math.abs(num);
+                    break;
+                case "floor":
+                    result = Math.floor(num);
+                    break;
+                case "ceil":
+                    result = Math.ceil(num);
+                    break;
+                case "round":
+                    result = Math.round(num);
+                    break;
+                case "pow2":
+                    result = Math.pow(num, 2);
+                    break;
+                case "sqrt":
+                    result = Math.sqrt(num);
+                    break;
+                default:
+                    result = "Please select a valid operation.";
+            }
+
+            document.getElementById("result").innerText = `Result: ${result}`;
+        }
+    </script>
+</body>
+</html>
